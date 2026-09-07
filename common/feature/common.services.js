@@ -44,3 +44,15 @@ export async function commonGetSingleService(table, id) {
   }
   return existing
 }
+
+export async function commonGetSingleServiceBySlug(table, slug) {
+  const existing = await commonFindBySlug(table, slug);
+
+  if (!existing) {
+    throw new HttpError(
+      `Record with slug ${slug} doesn't exist`,
+      StatusCodes.NOT_FOUND,
+    );
+  }
+  return existing;
+}

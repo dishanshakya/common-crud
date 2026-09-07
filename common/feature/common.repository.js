@@ -21,6 +21,19 @@ export async function commonFindById(source, id) {
   return result;
 }
 
+export async function commonFindBySlug(source, slug) {
+  const baseTable = source && source.dataQuery ? source.baseTable : source;
+  const { dataQuery } = source && source.dataQuery ? source : fromTable(source);
+  let [result] = await dataQuery.where(eq(baseTable.slug, slug));
+
+  if (result.password) {
+    let { password, ...rest } = result;
+    result = rest;
+  }
+  return result;
+}
+
+
 export async function commonFindAll(table, query = {}) {
 
   const result = await paginateAndSearch(table, {
