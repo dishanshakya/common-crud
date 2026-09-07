@@ -1,7 +1,7 @@
 import HttpError from "../errors/HttpError.js";
 import { StatusCodes } from "http-status-codes";
 import {
-  commonFindAll, commonFindById, commonCreate, commonUpdate, commonDelete
+  commonFindAll, commonFindById, commonCreate, commonUpdate, commonDelete, commonFindBySlug
 } from "./common.repository.js";
 import { comparator } from "../utils/patcher.js";
 
